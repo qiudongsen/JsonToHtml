@@ -28,6 +28,23 @@ namespace JsonToHtml
             return str.ToString();
         }
 
+        /// <summary>
+        /// extend
+        /// from array node get html
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static string GetHtmlFromJsonArray(JArray arr)
+        {
+            JsonLoadSettings setting = new JsonLoadSettings();
+            setting.CommentHandling = CommentHandling.Load;
+            StringBuilder str = new StringBuilder();
+            str.Append("<!DOCTYPE html><html>" + GetTableBeautifulCss() + "<body>");
+            BuildTableFromJsonArray(arr, str);
+            str.Append("</body></html>");
+            return str.ToString();
+        }
+
         private static void BuildTableFromJsonObject(JObject jb, StringBuilder str)
         {
             str.Append("<table class=\"tablecss\">");
