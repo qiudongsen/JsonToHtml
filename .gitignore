@@ -1,0 +1,12 @@
+
+*.dll
+*.exe
+*.pdb
+C#/JsonToHtml.Test/bin/Debug/a.json
+C#/JsonToHtml.Test/bin/Debug/JsonToHtml.Test.vshost.exe.manifest
+C#/JsonToHtml.Test/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+C#/JsonToHtml.Test/obj/x86/Debug/JsonToHtml.Test.csproj.FileListAbsolute.txt
+C#/JsonToHtml.Test/obj/x86/Debug/JsonToHtml.Test.csprojResolveAssemblyReference.cache
+*.cache
+C#/JsonToHtml/obj/Debug/JsonToHtml.csproj.FileListAbsolute.txt
+C#/JsonToHtml/obj/Release/JsonToHtml.csproj.FileListAbsolute.txt
