@@ -7,6 +7,7 @@ namespace JsonToHtml
 {
     public enum HtmlStyle
     {
-        Default,
+        HasHtmlHeader,
+        NoHtmlHeader
     }
 }

@@ -16,15 +16,25 @@ namespace JsonToHtml
         /// <param name="json">must be a json object , except json array</param>
         /// <param name="style"></param>
         /// <returns></returns>
-        public static string GetHtml(string json ,HtmlStyle style = HtmlStyle.Default)
+        public static string GetHtml(string json, HtmlStyle style = HtmlStyle.HasHtmlHeader)
         {
             JsonLoadSettings setting = new JsonLoadSettings();
             setting.CommentHandling = CommentHandling.Load;
             JObject jb = JObject.Parse(json, setting);
             StringBuilder str = new StringBuilder();
-            str.Append("<!DOCTYPE html><html>"+GetTableBeautifulCss()+"<body>");
+            if (style != HtmlStyle.NoHtmlHeader)
+            {
+                str.Append("<!DOCTYPE html><html>" + GetTableBeautifulCss() + "<body>");
+            }
+            else
+            {
+                str.Append(GetTableBeautifulCss());
+            }
             BuildTableFromJsonObject(jb, str);
-            str.Append("</body></html>");
+            if (style != HtmlStyle.NoHtmlHeader)
+            {
+                str.Append("</body></html>");
+            }
             return str.ToString();
         }
 
@@ -34,14 +44,24 @@ namespace JsonToHtml
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public static string GetHtmlFromJsonArray(JArray arr)
+        public static string GetHtmlFromJsonArray(JArray arr, HtmlStyle style = HtmlStyle.HasHtmlHeader)
         {
             JsonLoadSettings setting = new JsonLoadSettings();
             setting.CommentHandling = CommentHandling.Load;
             StringBuilder str = new StringBuilder();
-            str.Append("<!DOCTYPE html><html>" + GetTableBeautifulCss() + "<body>");
+            if (style != HtmlStyle.NoHtmlHeader)
+            {
+                str.Append("<!DOCTYPE html><html>" + GetTableBeautifulCss() + "<body>");
+            }
+            else
+            {
+                str.Append(GetTableBeautifulCss());
+            }
             BuildTableFromJsonArray(arr, str);
-            str.Append("</body></html>");
+            if (style != HtmlStyle.NoHtmlHeader)
+            {
+                str.Append("</body></html>");
+            }
             return str.ToString();
         }
 
